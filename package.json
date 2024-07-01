@@ -1,14 +1,26 @@
 {
-  "name": "bolt-js-getting-started-app",
-  "version": "2.0.0",
-  "description": "Getting Started ⚡️ Bolt for JavaScript",
+  "name": "slack-useless-facts",
+  "version": "1.0.0",
+  "description": "Slack app that sends useless facts to a channel",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node app.ts",
+    "build": "npx esbuild app.ts --bundle --platform=node --target=node20 --external:aws-sdk --minify --tree-shaking=true --outdir=deploy/",
+    "deploy": "cdk synth && cdk deploy --require-approval never",
+    "invoke": "aws lambda invoke --function-name SlackUselessFactStack-SlackUselessFactStack434240B-sWYdnOOkzCj8 out.json"
   },
   "license": "MIT",
   "dependencies": {
-    "@slack/bolt": "^3.6.0"
+    "@slack/web-api": "^7.2.0",
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.2"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.140",
+    "@types/node": "^20.14.9",
+    "aws-cdk": "^2.147.2",
+    "aws-cdk-lib": "^2.147.2"
   }
 }

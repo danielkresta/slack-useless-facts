@@ -1,0 +1,19 @@
+{
+  "watch": {
+    "include": ["**"],
+    "exclude": [
+      "README.md",
+      "cdk*.json",
+      "**/*.d.ts",
+      "**/*.ts",
+      "tsconfig.json",
+      "jest.config.js",
+      "package*.json",
+      "yarn.lock",
+      "node_modules",
+      "test",
+      "deploy/deploy.ts"
+    ]
+  },
+  "app": "ts-node deploy/deploy.ts"
+}
